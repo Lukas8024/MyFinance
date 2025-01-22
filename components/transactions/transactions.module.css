@@ -1,0 +1,15 @@
+.transactions {
+    display: flex;
+    flex-direction: column;
+    margin: 1.4rem;
+    padding: 1rem;
+    list-style: none;
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+.summary{
+    margin-top: 2rem;
+    text-align: end;
+    font-size: 1.6rem;
+}

@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Welcome to My Finance!
 
-## Getting Started
+The **"My Finance"** project was written to practice what I have learned about React + TypeScript + Next, with less focus on styling.
 
-First, run the development server:
+<!-- ## Live:  [My Finance](http://lukas8024.github.io/netfix/) -->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Description
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<!-- I used React Router in the project to maintain a static page. Instead of “createBrowserRouter”, I used “HashRouter”,among other things, to make it easier to host in “GitHub Pages”.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+In the “Top five” section, five movies from the library are drawn, which are stored in the browser's “local storage” to be visible on all subpages until the page is closed.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+In the “Films” sub-page, you will find all the films from the library and can add or remove them from “My favorites.” They are displayed in the lower section of “Films,” and on the sub-page “My favorites” where we can also delete them.   -->
 
-## Learn More
+## Future
 
-To learn more about Next.js, take a look at the following resources:
+This project is being developed all the time.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Next]

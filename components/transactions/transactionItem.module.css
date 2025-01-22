@@ -1,0 +1,19 @@
+.transactionItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.6rem;
+}
+
+.image {
+	margin-right: 1.2rem;
+}
+
+.details {
+	display: flex;
+	padding: 0.4rem;
+}
+
+.details p{
+    margin-right: 2.4rem;
+}
