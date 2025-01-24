@@ -1,0 +1,43 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 2rem;
+}
+
+.control {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	font-size: 1.4rem;
+}
+
+.control input{
+	padding: 0.4rem;
+	font-size: 1.4rem;
+	border-radius: 0.8px;
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+	margin-top: 1.6rem;
+}
+
+.actions button {
+	padding: 0.7rem 1.2rem;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+}
+
+.actions button[type='submit'] {
+	background-color: #4caf50;
+	color: white;
+}
+
+.actions button[type='button'] {
+	background-color: #f44336;
+	color: white;
+}

@@ -3,7 +3,7 @@ import { TransactionsClientLogic } from '@/components/transactions/transactionCo
 
 import classes from './transactions.module.css'
 
-type transaction = {
+type Transaction = {
 	id: number
 	category: string
 	title: string
@@ -11,7 +11,7 @@ type transaction = {
 }
 
 type TransactionsProps = {
-	transactions: transaction[]
+	transactions: Transaction[]
 }
 
 export default function Transactions({ transactions }: TransactionsProps) {

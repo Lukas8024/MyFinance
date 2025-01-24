@@ -1,12 +1,23 @@
 'use client'
 
 import TransactionContext from '@/store/transactions-context'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import classes from './transactionCounter.module.css'
+import Modal from '../ui/modal'
+import TransactionForm from './transactionForm'
 
 export function AvaiableMoney() {
 	const { avaiableMoney } = useContext(TransactionContext)
+	const [isModalOpen, setIsModalOpen] = useState(false)
+
+	const openModalHandler = () => setIsModalOpen(true)
+	const closeModalHandler = () => setIsModalOpen(false)
+
+	const addTransactionHandler = (transaction: { category: string; title: string; amount: number }) => {
+		// Logic saved database
+		console.log('Dodano transakcję:', transaction)
+	}
 
 	return (
 		<>
@@ -15,8 +26,14 @@ export function AvaiableMoney() {
 				<p> $ {avaiableMoney}</p>
 			</div>
 			<div className={classes.avaiableAction}>
-				<button>Add Transaction</button>
+				<button onClick={openModalHandler}>Add Transaction</button>
 			</div>
+			{isModalOpen && (
+				<Modal onClose={closeModalHandler}>
+					<TransactionForm onCancel={closeModalHandler} onSubmit={addTransactionHandler} />
+				</Modal>
+			)}
+			;
 		</>
 	)
 }

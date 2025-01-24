@@ -12,41 +12,33 @@ import { TransactionProvider } from '@/store/transactions-context'
 import Transactions from '@/components/transactions/transactions'
 import { AvaiableMoney } from '@/components/transactions/transactionCounter'
 
-type transaction = {
+type Transaction = {
 	id: number
 	category: string
 	title: string
 	amount: number
 }
 
-async function TransactionsList() {
-	const datatransactions = (await getTransactions()) as transaction[]
-
-	const expenses = datatransactions.filter(tx => tx.amount < 0)
-	// const income = datatransactions.filter(tx => tx.amount >= 0)
-
-	console.log('Expenses:', expenses)
-	// console.log('Income:', income)
-
-	return <Transactions transactions={expenses} />
+type TransactionListProps = {
+	type: 'expense' | 'income'
 }
 
-async function TransactionsListIncome() {
-	const datatransactions = (await getTransactions()) as transaction[];
+async function TransactionsList({ type }: TransactionListProps) {
+	const datatransactions = (await getTransactions()) as Transaction[]
 
-	const income = datatransactions.filter(tx => tx.amount >= 0);
+	const filteredTransaction =
+		type === 'expense' ? datatransactions.filter(tx => tx.amount < 0) : datatransactions.filter(tx => tx.amount >= 0)
 
-	console.log('Income:', income);
-
-	return <Transactions transactions={income} />;
+	return <Transactions transactions={filteredTransaction} />
 }
 
 export default function Home() {
+
 	return (
 		<TransactionProvider>
 			<div className={classes.page}>
 				<header className={classes.header}>
-					<Image className={classes.mainlogo} src={mainLogo} alt='logo company "My finance' />
+					<Image className={classes.mainlogo} src={mainLogo} alt='logo company "My finance' priority />
 					<h1>My Wallet</h1>
 					<p>Account for your budget!</p>
 				</header>
@@ -56,16 +48,14 @@ export default function Home() {
 						<div>
 							<h3>Expenses:</h3>
 							<Suspense fallback={<p className={classes.loading}>Data fetching...</p>}>
-								<TransactionsList />
+								<TransactionsList type='expense' />
 							</Suspense>
-							{/* <Transactions transactions={expenses} /> */}
 						</div>
 						<div>
 							<h3>Income:</h3>
 							<Suspense fallback={<p className={classes.loading}>Data fetching...</p>}>
-								<TransactionsListIncome />
+								<TransactionsList type='income' />
 							</Suspense>
-							{/* <Transactions transactions={income} /> */}
 						</div>
 					</section>
 					<section>
