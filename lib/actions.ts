@@ -1,6 +1,7 @@
 'use server'
 
 import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 import { saveTransaction } from './transactions'
 
 export async function addDataTransaction(formData: FormData) {
@@ -12,5 +13,6 @@ export async function addDataTransaction(formData: FormData) {
 
 
 	await saveTransaction(transaction)
+    revalidatePath('/')
     redirect('/')
 }
