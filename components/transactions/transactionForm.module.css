@@ -12,10 +12,22 @@
 	font-size: 1.4rem;
 }
 
+.iconPreview{
+	display: flex;
+	gap: 2rem;
+	/* justify-content: space-between; */
+}
+
 .control input{
-	padding: 0.4rem;
+	padding: 0.4rem 1.5rem;
 	font-size: 1.4rem;
-	border-radius: 0.8px;
+	border-radius: 8px;
+}
+
+.control select{
+	padding: 0.4rem 1.5rem;
+	font-size: 1.4rem;
+	border-radius: 8px;
 }
 
 .actions {

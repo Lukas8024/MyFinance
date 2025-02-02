@@ -3,7 +3,7 @@ import { TransactionsClientLogic } from '@/components/transactions/transactionCo
 
 import classes from './transactions.module.css'
 
-type Transaction = {
+ export type Transaction = {
 	id: number
 	category: string
 	title: string

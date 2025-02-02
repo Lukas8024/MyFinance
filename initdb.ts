@@ -15,7 +15,7 @@ db.prepare(
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	category TEXT NOT NULL,
 	title TEXT NOT NULL,
-	amount REAL
+	amount REAL NOT NULL
 	)
 	`
 ).run()

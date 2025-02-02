@@ -14,11 +14,6 @@ export function AvaiableMoney() {
 	const openModalHandler = () => setIsModalOpen(true)
 	const closeModalHandler = () => setIsModalOpen(false)
 
-	const addTransactionHandler = (transaction: { category: string; title: string; amount: number }) => {
-		// Logic saved database
-		console.log('Dodano transakcję:', transaction)
-	}
-
 	return (
 		<>
 			<div className={classes.avaiableMoney}>
@@ -30,10 +25,9 @@ export function AvaiableMoney() {
 			</div>
 			{isModalOpen && (
 				<Modal onClose={closeModalHandler}>
-					<TransactionForm onCancel={closeModalHandler} onSubmit={addTransactionHandler} />
+					<TransactionForm onCancel={closeModalHandler} />
 				</Modal>
 			)}
-			;
 		</>
 	)
 }
