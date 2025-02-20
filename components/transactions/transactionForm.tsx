@@ -9,11 +9,10 @@ import TransactionFormSubmit from './transactionFormSubmit'
 
 type TransactionFormProps = {
 	onCancel: () => void
-	// onSubmit: (transaction: { title: string; category: string; amount: number }) => void
 }
 
 export default function TransactionForm({ onCancel }: TransactionFormProps) {
-	const categories = ['Food', 'Clothes', 'Coins']
+	const categories = ['Food', 'Clothes', 'Income']
 	const [selectedCategory, setSelectedCategory] = useState(categories[0])
 
 	return (

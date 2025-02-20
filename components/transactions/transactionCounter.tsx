@@ -35,9 +35,34 @@ export function AvaiableMoney() {
 export function TransactionsClientLogic({ summaryValue }: { summaryValue: number }) {
 	const { avaiableAccount } = useContext(TransactionContext)
 
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		avaiableAccount(summaryValue), 10000
+	// 	})
+	// }, [summaryValue, avaiableAccount])
+
 	useEffect(() => {
-		avaiableAccount(summaryValue)
-	}, [summaryValue])
+		setTimeout(() => {
+			avaiableAccount(summaryValue)
+		}, 3000)
+	}, [summaryValue, avaiableAccount])
+
+console.log(avaiableAccount);
+console.log(summaryValue);
 
 	return null
 }
+
+// export function TransactionsClientLogic({ summaryValue }: { summaryValue: number }) {
+// 	const { avaiableAccount } = useContext(TransactionContext)
+// 	const [prevValue, setPrevValue] = useState<number | null>(null)
+
+// 	useEffect(() => {
+// 		if (summaryValue !== prevValue) {
+// 			avaiableAccount(summaryValue)
+// 			setPrevValue(summaryValue) // Zapamiętaj ostatnią wartość
+// 		}
+// 	}, [summaryValue, avaiableAccount, prevValue])
+
+// 	return null
+// }

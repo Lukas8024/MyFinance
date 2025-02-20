@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useState, useCallback } from 'react'
 
 type AccountObj = {
 	avaiableAccount: (summaryValue: number) => void
@@ -19,18 +19,32 @@ const TransactionContext = createContext<AccountObj>({
 export function TransactionProvider({ children }: TransactionProviderProps) {
 	const [summaryIncoming, setSummaryIncoming] = useState(0)
 	const [summaryExpense, setSummaryExpense] = useState(0)
-
-	const avaiableMoney = summaryIncoming - summaryExpense
-
-	function avaiableAccount(summaryValue: number) {
+	
+	
+	const avaiableAccount = useCallback((summaryValue: number) => {
 		if (summaryValue > 0) {
 			setSummaryIncoming(prev => prev + summaryValue)
 		} else {
-			setSummaryExpense(prev => prev - summaryValue) // Zamiana na liczbę dodatnią
+			setSummaryExpense(prev => prev + Math.abs(summaryValue))
 		}
 		console.log(`Przychód: ${summaryIncoming}, Wydatki: ${summaryExpense}, Dostępne: ${avaiableMoney}`)
-	}
+	}, []) // useCallback zabezpiecza przed niepotrzebnym tworzeniem nowej funkcji
+	
+	const avaiableMoney = summaryIncoming - summaryExpense
+	
+	// function avaiableAccount(summaryValue: number) {
+	// 	if (summaryValue > 0) {
+	// 		setSummaryIncoming(prev => prev + summaryValue)
+	// 	} else {
+	// 		// setSummaryExpense(prev => prev - summaryValue)
+	// 		setSummaryExpense(prev => prev + Math.abs(summaryValue))
+	// 	}
 
+	// console.log(`Przychód: ${summaryIncoming}, Wydatki: ${summaryExpense}, Dostępne: ${avaiableMoney}`)
+		
+	// }
+	
+	
 	const TransactionContextValue = {
 		avaiableAccount,
 		avaiableMoney,

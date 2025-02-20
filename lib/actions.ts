@@ -1,18 +1,24 @@
 'use server'
 
 import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
-import { saveTransaction } from './transactions'
+// import { revalidatePath } from 'next/cache'
+import { getTransactions, saveTransaction } from './transactions'
 
 export async function addDataTransaction(formData: FormData) {
-	const transaction = {
-		title: formData.get('title') as string,
-		category: formData.get('category') as string,
-		amount: Number(formData.get('amount')),
+	const title = formData.get('title') as string
+	const category = formData.get('category') as string
+	const amount = Number(formData.get('amount'))
+
+	if (!title || !category || isNaN(amount) || amount === 0) {
+		throw new Error('Niepoprawne dane transakcji')
 	}
 
+	await saveTransaction({ title, category, amount })
 
-	await saveTransaction(transaction)
-    revalidatePath('/')
-    redirect('/')
+
+	// console.log('revalidate before');
+	// revalidatePath('/')
+	// console.log('revalidate');
+
+	redirect('/')
 }

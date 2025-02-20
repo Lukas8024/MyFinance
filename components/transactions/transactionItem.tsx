@@ -3,7 +3,6 @@ import Image from 'next/image'
 import classes from './transactionItem.module.css'
 
 type TransactionItemProps = {
-	id: number
 	category: string
 	title: string
 	amount: number

@@ -1,33 +1,33 @@
-import sql from 'better-sqlite3'
+import { getDb } from '@/lib/mongodb'
 
-type Transaction = {
-	category: string
-	title: string
-	amount: number
-}
-
-const db = sql('transactions.db')
-
-export async function getTransactions() {
-	// await new Promise(resolve => setTimeout(resolve, 2000))
-	// throw new Error('Loading transactions failed!')
-	return db.prepare('SELECT * FROM transactions').all()
-}
-
-export async function saveTransaction(transaction: Transaction) {
-	await new Promise(resolve => setTimeout(resolve, 2000))
-
+export async function saveTransaction(transaction: { title: string; category: string; amount: number }) {
 	const categoryLower = transaction.category.toLowerCase()
 
-	const fileName = `${categoryLower}_Icon.svg`
-	transaction.category = `/images/${fileName}`
+		const fileName = `${categoryLower}_Icon.svg`
+		transaction.category = `/images/${fileName}`
 
-	db.prepare(
-		`
-		INSERT INTO transactions (category, title, amount) VALUES (
-		@category,
-		@title,
-		@amount)
-		`
-	).run(transaction)
+	try {
+		const db = await getDb()
+		const collection = db.collection('transactions') // Nazwa kolekcji w bazie
+
+		const result = await collection.insertOne(transaction)
+		return result
+	} catch (error) {
+		console.error('Błąd zapisu do MongoDB:', error)
+		throw new Error('Nie udało się zapisać transakcji')
+	}
+}
+
+export async function getTransactions() {
+	const db = await getDb()
+	const collection = db.collection('transactions')
+
+	const transactions = await collection.find().toArray()
+
+	return transactions.map(tx => ({
+		_id: tx._id.toString(),
+		category: tx.category,
+		title: tx.title,
+		amount: tx.amount,
+	}))
 }

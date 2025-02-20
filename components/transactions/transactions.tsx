@@ -3,8 +3,8 @@ import { TransactionsClientLogic } from '@/components/transactions/transactionCo
 
 import classes from './transactions.module.css'
 
- export type Transaction = {
-	id: number
+export type Transaction = {
+	_id: string
 	category: string
 	title: string
 	amount: number
@@ -15,14 +15,13 @@ type TransactionsProps = {
 }
 
 export default function Transactions({ transactions }: TransactionsProps) {
-
 	const summaryValue = transactions.reduce((sum, transaction) => sum + transaction.amount, 0)
-	console.log(summaryValue);
+	// console.log(summaryValue);
 
 	return (
 		<ul className={classes.transactions}>
 			{transactions.map(transaction => (
-				<li key={transaction.id}>
+				<li key={transaction._id}>
 					<TransactionItem {...transaction} />
 				</li>
 			))}

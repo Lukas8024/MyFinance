@@ -2,7 +2,7 @@
 
 The **"My Finance"** project was written to practice what I have learned about React + TypeScript + Next, with less focus on styling.
 
-<!-- ## Live:  [My Finance](http://lukas8024.github.io/netfix/) -->
+## Live: [My Finance](https://my-finance-ashy.vercel.app/)
 
 ## Description
 
