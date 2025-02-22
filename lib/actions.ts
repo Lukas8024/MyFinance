@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation'
 // import { revalidatePath } from 'next/cache'
-import { getTransactions, saveTransaction } from './transactions'
+import { saveTransaction } from './transactions'
 
 export async function addDataTransaction(formData: FormData) {
 	const title = formData.get('title') as string

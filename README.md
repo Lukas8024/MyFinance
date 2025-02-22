@@ -5,12 +5,7 @@ The **"My Finance"** project was written to practice what I have learned about R
 ## Live: [My Finance](https://my-finance-ashy.vercel.app/)
 
 ## Description
-
-<!-- I used React Router in the project to maintain a static page. Instead of “createBrowserRouter”, I used “HashRouter”,among other things, to make it easier to host in “GitHub Pages”.
-
-In the “Top five” section, five movies from the library are drawn, which are stored in the browser's “local storage” to be visible on all subpages until the page is closed.
-
-In the “Films” sub-page, you will find all the films from the library and can add or remove them from “My favorites.” They are displayed in the lower section of “Films,” and on the sub-page “My favorites” where we can also delete them.   -->
+In the process of creating
 
 ## Future
 
