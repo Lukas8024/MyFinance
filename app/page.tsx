@@ -20,7 +20,7 @@ type TransactionListProps = {
 	type: 'expense' | 'income'
 }
 
-// export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'
 
 async function TransactionsList({ type }: TransactionListProps) {
 	const datatransactions = (await getTransactions()) as Transaction[]
@@ -30,7 +30,7 @@ async function TransactionsList({ type }: TransactionListProps) {
 
 	// const totalAmount = filteredTransaction.reduce((sum, tx) => sum + tx.amount, 0)
 
-	// console.log(datatransactions);
+	console.log(datatransactions);
 
 	const totalAmount = datatransactions.reduce((sum, tx) => sum + tx.amount, 0)
 
