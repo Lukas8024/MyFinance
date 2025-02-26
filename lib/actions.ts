@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
+import { deleteTransactionById } from './transactions'
 
 import { saveTransaction } from './transactions'
 
@@ -16,10 +17,20 @@ export async function addDataTransaction(formData: FormData) {
 
 	await saveTransaction({ title, category, amount })
 
-
-	console.log('revalidate before');
 	revalidatePath('/')
-	console.log('revalidate after');
-
 	redirect('/')
+}
+
+
+
+
+export async function deleteTransaction(id: string) {
+	if (!id) {
+		throw new Error('Brak ID transakcji')
+	}
+
+	await deleteTransactionById(id)
+
+	revalidatePath('/')
+	redirect('/') 
 }

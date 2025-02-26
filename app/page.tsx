@@ -28,22 +28,22 @@ async function TransactionsList({ type }: TransactionListProps) {
 	const filteredTransaction =
 		type === 'expense' ? datatransactions.filter(tx => tx.amount < 0) : datatransactions.filter(tx => tx.amount >= 0)
 
-	// const totalAmount = filteredTransaction.reduce((sum, tx) => sum + tx.amount, 0)
-
-	console.log(datatransactions);
-
-	const totalAmount = datatransactions.reduce((sum, tx) => sum + tx.amount, 0)
+	// console.log(datatransactions)
 
 	return (
 		<div>
 			<Transactions transactions={filteredTransaction} />
-			{/* <p>
-				Total {type === 'expense' ? 'Expenses' : 'Income'}: {totalAmount}
-			</p> */}
-			<p>Avaiable Money: {totalAmount}</p>
 		</div>
 	)
-	// <Transactions transactions={filteredTransaction} />
+}
+
+async function GetTotalAmount() {
+	const datatransactions = (await getTransactions()) as Transaction[]
+
+	const avaiableMoney = datatransactions.reduce((sum, tx) => sum + tx.amount, 0)
+
+	// console.log(money)
+	return <AvaiableMoney money={avaiableMoney} />
 }
 
 export default function Home() {
@@ -56,7 +56,7 @@ export default function Home() {
 			</header>
 			<main>
 				<section>
-					<AvaiableMoney />
+					<GetTotalAmount />
 				</section>
 				<section>
 					<h2>List of Transactions</h2>

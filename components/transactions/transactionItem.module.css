@@ -17,3 +17,22 @@
 .details p{
     margin-right: 2.4rem;
 }
+
+.actions{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.delete {
+	cursor: pointer;
+	margin-left: 1rem;
+	padding: 0.2rem;
+	border: none;
+	border-radius: 50%;
+	transition: background-color 0.2s;
+}
+
+.delete:hover {
+	background-color: #f00;
+}

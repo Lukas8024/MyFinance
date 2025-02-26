@@ -15,7 +15,6 @@ declare global {
 	var _mongoClientPromise: Promise<MongoClient> | undefined
 }
 
-// Używanie globalThis w kodzie, zamiast var
 if (process.env.NODE_ENV === 'development') {
 	if (!globalThis._mongoClientPromise) {
 		client = new MongoClient(MONGODB_URI)

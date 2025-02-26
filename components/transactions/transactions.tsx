@@ -1,5 +1,5 @@
 import TransactionItem from './transactionItem'
-import { TransactionsClientLogic } from '@/components/transactions/transactionCounter'
+// import { TransactionsClientLogic } from '@/components/transactions/transactionCounter'
 
 import classes from './transactions.module.css'
 
@@ -26,7 +26,7 @@ export default function Transactions({ transactions }: TransactionsProps) {
 				</li>
 			))}
 			<p className={classes.summary}>Summary: $ {summaryValue}</p>
-			<TransactionsClientLogic summaryValue={summaryValue} />
+			{/* <TransactionsClientLogic summaryValue={summaryValue} /> */}
 		</ul>
 	)
 }
