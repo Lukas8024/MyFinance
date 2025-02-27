@@ -12,17 +12,16 @@ type TransactionFormProps = {
 }
 
 export default function TransactionForm({ onCancel }: TransactionFormProps) {
-	const categories = ['Food', 'Clothes', 'Income']
+	const categories = ['House', 'Food', 'Clothes', 'Transportation', 'Health', 'Income']
 	const [selectedCategory, setSelectedCategory] = useState(categories[0])
 	const [amount, setAmount] = useState('')
 
 	const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		let value = e.target.value
-		
-		if (['Food', 'Clothes'].includes(selectedCategory) && !value.startsWith('-')) {
+
+		if (['House', 'Food', 'Clothes', 'Transportation', 'Health'].includes(selectedCategory) && !value.startsWith('-')) {
 			value = '-' + value
 		} else if (selectedCategory === 'Income' && value.startsWith('-')) {
-			
 			value = value.replace('-', '')
 		}
 		setAmount(value)
@@ -51,15 +50,7 @@ export default function TransactionForm({ onCancel }: TransactionFormProps) {
 			</div>
 			<div className={classes.control}>
 				<label htmlFor='amount'>Amount:</label>
-				{/* <input type='number' id='amount' name='amount' required /> */}
-				<input 
-					type='number' 
-					id='amount' 
-					name='amount' 
-					required 
-					value={amount} 
-					onChange={handleAmountChange} 
-				/>
+				<input type='number' id='amount' name='amount' required value={amount} onChange={handleAmountChange} />
 			</div>
 			<div className={classes.actions}>
 				<button type='button' onClick={onCancel}>

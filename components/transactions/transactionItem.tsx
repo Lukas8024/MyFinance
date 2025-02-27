@@ -1,14 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import { useTransition } from 'react'
+import { useState, useTransition } from 'react'
 
 import TrashIcon from '@/assets/trash_Icon.svg'
 
 import classes from './transactionItem.module.css'
 
 import { deleteTransaction } from '@/lib/actions'
-
 
 type TransactionItemProps = {
 	_id: string
@@ -17,12 +16,17 @@ type TransactionItemProps = {
 	amount: number
 }
 
-
-
 export default function TransactionItem({ _id, category, title, amount }: TransactionItemProps) {
 	const [isPending, startTransition] = useTransition()
+	const [isConfirming, setIsConfirming] = useState(false)
 
 	const handleDelete = () => {
+		if (!window.confirm('Are you sure you want to delete this transaction?')) {
+			return
+		}
+
+		setIsConfirming(true)
+
 		startTransition(async () => {
 			await deleteTransaction(_id)
 		})
@@ -38,7 +42,7 @@ export default function TransactionItem({ _id, category, title, amount }: Transa
 				<p>$ {amount.toFixed(2)}</p>
 				<button className={classes.delete} onClick={handleDelete} disabled={isPending}>
 					{/* <Image src={TrashIcon} alt='Trash Icon' width={15} height={15} /> */}
-					{isPending ? 'Delete...' : <Image src={TrashIcon} alt="Trash Icon" width={15} height={15} />}
+					{isPending || isConfirming ? 'Delete...' : <Image src={TrashIcon} alt='Trash Icon' width={15} height={15} />}
 				</button>
 			</div>
 		</div>
