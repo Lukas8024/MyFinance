@@ -30,9 +30,11 @@
 	padding: 0.2rem;
 	border: none;
 	border-radius: 50%;
-	transition: background-color 0.2s;
+	background: none;
+	transition: transform 0.3s;
 }
 
 .delete:hover {
-	background-color: #f00;
+	/* background-color: #f00; */
+	transform: scale(1.2);
 }
