@@ -41,7 +41,6 @@ export default function TransactionItem({ _id, category, title, amount }: Transa
 			<div className={classes.actions}>
 				<p>$ {amount.toFixed(2)}</p>
 				<button className={classes.delete} onClick={handleDelete} disabled={isPending}>
-					{/* <Image src={TrashIcon} alt='Trash Icon' width={15} height={15} /> */}
 					{isPending || isConfirming ? 'Delete...' : <Image src={TrashIcon} alt='Trash Icon' width={15} height={15} />}
 				</button>
 			</div>

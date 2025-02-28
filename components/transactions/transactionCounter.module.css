@@ -1,11 +1,9 @@
 .avaiableMoney {
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     padding: 1.2rem;
     font-size: 1.8rem;
-    /* border: 1px solid #b4b4b4; */
 }
 
 .avaiableAction{

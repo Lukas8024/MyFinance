@@ -8,6 +8,7 @@ import { getTransactions } from '@/lib/transactions'
 
 import Transactions from '@/components/transactions/transactions'
 import { AvaiableMoney } from '@/components/transactions/transactionCounter'
+import Footer from '@/components/footer'
 
 type Transaction = {
 	_id: string
@@ -48,32 +49,37 @@ async function GetTotalAmount() {
 
 export default function Home() {
 	return (
-		<div className={classes.page}>
-			<header className={classes.header}>
-				<Image className={classes.mainlogo} src={mainLogo} alt='logo company "My finance' priority />
-				<h1>My Wallet</h1>
-				<p>Account for your budget!</p>
-			</header>
-			<main>
-				<section>
-					<GetTotalAmount />
-				</section>
-				<section>
-					<h2>List of Transactions</h2>
-					<div>
-						<h3>Expenses:</h3>
-						<Suspense fallback={<p className={classes.loading}>Data fetching...</p>}>
-							<TransactionsList type='expense' />
-						</Suspense>
-					</div>
-					<div>
-						<h3>Income:</h3>
-						<Suspense fallback={<p className={classes.loading}>Data fetching...</p>}>
-							<TransactionsList type='income' />
-						</Suspense>
-					</div>
-				</section>
-			</main>
-		</div>
+		<>
+			<div className={classes.page}>
+				<header className={classes.header}>
+					<Image className={classes.mainlogo} src={mainLogo} alt='logo company "My finance' priority />
+					<h1>My Wallet</h1>
+					<p>Account for your budget!</p>
+				</header>
+				<main>
+					<section>
+						<GetTotalAmount />
+					</section>
+					<section>
+						<h2>List of Transactions</h2>
+						<div>
+							<h3>Expenses:</h3>
+							<Suspense fallback={<p className={classes.loading}>Data fetching...</p>}>
+								<TransactionsList type='expense' />
+							</Suspense>
+						</div>
+						<div>
+							<h3>Income:</h3>
+							<Suspense fallback={<p className={classes.loading}>Data fetching...</p>}>
+								<TransactionsList type='income' />
+							</Suspense>
+						</div>
+					</section>
+				</main>
+			</div>
+			<footer>
+				<Footer />
+			</footer>
+		</>
 	)
 }
