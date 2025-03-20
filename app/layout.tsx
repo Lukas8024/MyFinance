@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import './globals.css'
+import Providers from './providers'
 
 export const metadata: Metadata = {
 	title: 'My Finance',
@@ -15,8 +16,10 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body>
+				<Providers>
 					{children}
-					<div id='modal-root'></div>
+				</Providers>
+				<div id='modal-root'></div>
 			</body>
 		</html>
 	)
