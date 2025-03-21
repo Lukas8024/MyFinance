@@ -4,6 +4,7 @@ import { FormEvent, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import classes from './page.module.css'
+import MainHeader from '@/components/main-header/main-header'
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
@@ -39,6 +40,8 @@ export default function LoginPage() {
   }
 
   return (
+    <div className={classes.login}>
+    <MainHeader />
     <div className={classes.loginContainer}>
       <h1>Login</h1>
       {error && <p className={classes.error}>{error}</p>}
@@ -57,5 +60,6 @@ export default function LoginPage() {
       </form>
       <p>Test credentials: test@test.com / test123</p>
     </div>
+  </div>
   )
 }

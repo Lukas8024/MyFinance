@@ -1,0 +1,31 @@
+.headerContent {
+	display: grid;
+	margin: 3rem 1rem;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 3px;
+	padding: 2rem;
+	border-radius: 8px;
+	text-align: center;
+	background-color: #f0f0f0;
+	border: 1px solid black;
+}
+
+.mainlogo {
+	width: 10rem;
+	height: 7rem;
+	border-radius: 8px;
+	grid-row: span 2 / span 2;
+}
+
+.header h1 {
+	font-size: 2.6rem;
+	align-self: center;
+}
+
+.header p {
+	grid-column-start: 2;
+	grid-row-start: 2;
+	font-size: 1.8rem;
+	align-self: center;
+}

@@ -1,17 +1,15 @@
 import { Suspense } from 'react'
-import Image from 'next/image'
-// import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 
 import classes from './page.module.css'
-import mainLogo from '../public/LogoMyFinance.png'
 
 import { getTransactions } from '@/lib/transactions'
 
 import Transactions from '@/components/transactions/transactions'
 import { AvaiableMoney } from '@/components/transactions/transactionCounter'
 import Footer from '@/components/footer'
+import MainHeader from '@/components/main-header/main-header'
 import LogoutButton from '@/components/auth/logout-button'
 
 type Transaction = {
@@ -32,8 +30,6 @@ async function TransactionsList({ type }: TransactionListProps) {
 
 	const filteredTransaction =
 		type === 'expense' ? datatransactions.filter(tx => tx.amount < 0) : datatransactions.filter(tx => tx.amount >= 0)
-
-	// console.log(datatransactions)
 
 	return (
 		<div>
@@ -62,11 +58,7 @@ export default async function Home() {
 		<>
 			<div className={classes.page}>
 				<header className={classes.header}>
-					<div className={classes.headerContent}>
-						<Image className={classes.mainlogo} src={mainLogo} alt='logo company "My finance' priority />
-						<h1>My Wallet</h1>
-						<p>Account for your budget!</p>
-					</div>
+					<MainHeader />
 					<div className={classes.headerActions}>
 						<LogoutButton />
 					</div>
