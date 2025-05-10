@@ -60,14 +60,15 @@ export default async function Home() {
 				<header className={classes.header}>
 					<MainHeader />
 					<div className={classes.headerActions}>
+						{session?.user?.name && <h2 className={classes.welcome}>Welcome, {session.user.name}!</h2>}
 						<LogoutButton />
 					</div>
 				</header>
-				<main>
-					<section>
+				<main className={classes.main}>
+					<section className={classes.avaiableMoney}>
 						<GetTotalAmount />
 					</section>
-					<section>
+					<section className={classes.transactions}>
 						<h2>List of Transactions</h2>
 						<div>
 							<h3>Expenses:</h3>

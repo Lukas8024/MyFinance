@@ -80,3 +80,19 @@
 	}
 }
 
+@media (min-width: 768px) {
+	.header {
+		display: flex;
+	}
+	.main {
+		display: flex;
+		padding: 3rem;
+	}
+	.avaiableMoney{
+		padding: 4rem;
+	}
+	.transactions {
+		padding: 4rem;
+	}
+}
+

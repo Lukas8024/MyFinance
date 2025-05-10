@@ -1,15 +1,52 @@
 .transactions {
-    display: flex;
-    flex-direction: column;
-    margin: 1.4rem;
-    padding: 1rem;
-    list-style: none;
-    border: 1px solid #b4b4b4;
-    border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	margin: 1.5rem auto;
+	padding: 2rem;
+	border: 2px solid #b4b4b4;
+	border-radius: 12px;
+	max-width: 65rem;
+	background-color: #ffffff;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.summary{
-    margin-top: 2rem;
-    text-align: end;
-    font-size: 1.6rem;
+.transactionList {
+	list-style: none;
+    padding: 1.5rem;
+}
+
+.summary {
+	margin-top: 2.5rem;
+	text-align: end;
+	font-size: 1.8rem;
+	font-weight: bold;
+	padding: 1.5rem;
+	border-top: 2px solid #b4b4b4;
+	color: #333;
+}
+
+.headers {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	background-color: #eaeaea;
+	border-radius: 8px;
+	margin-bottom: 0.5rem;
+}
+
+.details {
+	display: flex;
+	gap: 2rem;
+}
+
+.headers span {
+	font-weight: bold;
+	color: #666;
+	font-size: 1.4rem;
+}
+
+@media (min-width: 768px) {
+	.transactions {
+		padding: 3.5rem;
+	}
 }
